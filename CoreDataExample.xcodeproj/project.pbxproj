@@ -56,15 +56,39 @@
 		C7E5DF152237ED96001290F7 /* CoreDataExample */ = {
 			isa = PBXGroup;
 			children = (
+				C7E5DF2B2237EE3F001290F7 /* Sources */,
+				C7E5DF2C2237EE4A001290F7 /* Storyboards */,
+				C7E5DF2D2237EE53001290F7 /* Resources */,
+			);
+			path = CoreDataExample;
+			sourceTree = "<group>";
+		};
+		C7E5DF2B2237EE3F001290F7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
 				C7E5DF162237ED96001290F7 /* AppDelegate.swift */,
 				C7E5DF182237ED96001290F7 /* ViewController.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		C7E5DF2C2237EE4A001290F7 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
 				C7E5DF1A2237ED96001290F7 /* Main.storyboard */,
-				C7E5DF202237ED98001290F7 /* Assets.xcassets */,
 				C7E5DF222237ED98001290F7 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		C7E5DF2D2237EE53001290F7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C7E5DF202237ED98001290F7 /* Assets.xcassets */,
 				C7E5DF252237ED98001290F7 /* Info.plist */,
 				C7E5DF1D2237ED96001290F7 /* CoreDataExample.xcdatamodeld */,
 			);
-			path = CoreDataExample;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,7 +312,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RQ8948VJT6;
-				INFOPLIST_FILE = CoreDataExample/Info.plist;
+				INFOPLIST_FILE = CoreDataExample/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,7 +330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RQ8948VJT6;
-				INFOPLIST_FILE = CoreDataExample/Info.plist;
+				INFOPLIST_FILE = CoreDataExample/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
