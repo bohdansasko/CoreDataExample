@@ -44,15 +44,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func runCoreDataExample() {
-        CoreDataManager.shared.addCustomer(name: "000 \"Romashka\"")
+        CoreDataManager.shared.addCustomer(name: "000 \"Romashka\"", info: nil)
         CoreDataManager.shared.saveContext()
         
         CoreDataManager.shared.showCustomerFromDB()
         
-        CoreDataManager.shared.deleteCustomers()
-        CoreDataManager.shared.saveContext()
-        
-        CoreDataManager.shared.showCustomerFromDB()
+//        CoreDataManager.shared.deleteCustomers()
+//        CoreDataManager.shared.saveContext()
+//        
+//        CoreDataManager.shared.showCustomerFromDB()
     }
 }
 

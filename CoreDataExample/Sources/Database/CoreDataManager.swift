@@ -9,7 +9,7 @@
 import CoreData
 
 protocol IDatabaseManager {
-    func addCustomer(name: String)
+    func addCustomer(name: String, info: String?)
     func deleteCustomers()
     func showCustomerFromDB()
     func saveContext()
@@ -21,7 +21,7 @@ class CoreDataManager: IDatabaseManager {
     
     private init() {}
     
-    private lazy var persistentContainer: NSPersistentContainer = {
+    lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "CoreDataExample")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -31,11 +31,20 @@ class CoreDataManager: IDatabaseManager {
         return container
     }()
     
-    func addCustomer(name: String) {
+    func getFetchedResultsController<T:NSManagedObject>(entityName: String, sortKey: String) -> NSFetchedResultsController<T> {
+        let fetchRequest = NSFetchRequest<T>(entityName: entityName)
+        let sortDescriptor = NSSortDescriptor(key: sortKey, ascending: true)
+        
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        let fetchResultsController = NSFetchedResultsController<T>(fetchRequest: fetchRequest, managedObjectContext: persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchResultsController
+    }
+    
+    func addCustomer(name: String, info: String?) {
         let customer = Customer(context: persistentContainer.viewContext)
         customer.name = name
-        
-        print("\(customer.name!)")
+        customer.info = info
     }
     
     func deleteCustomers() {

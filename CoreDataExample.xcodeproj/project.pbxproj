@@ -22,6 +22,8 @@
 		C7E5DF6D22380B0E001290F7 /* Order+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E5DF6522380B0E001290F7 /* Order+CoreDataClass.swift */; };
 		C7E5DF6E22380B0E001290F7 /* Order+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E5DF6622380B0E001290F7 /* Order+CoreDataProperties.swift */; };
 		C7E5DF7022380D67001290F7 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E5DF6F22380D67001290F7 /* CoreDataManager.swift */; };
+		C7E5DF742238216A001290F7 /* CustomersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E5DF732238216A001290F7 /* CustomersTableViewController.swift */; };
+		C7E5DF7622382993001290F7 /* CustomerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E5DF7522382993001290F7 /* CustomerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		C7E5DF6522380B0E001290F7 /* Order+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C7E5DF6622380B0E001290F7 /* Order+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C7E5DF6F22380D67001290F7 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		C7E5DF732238216A001290F7 /* CustomersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersTableViewController.swift; sourceTree = "<group>"; };
+		C7E5DF7522382993001290F7 /* CustomerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomerViewController.swift; path = CoreDataExample/Sources/CustomerViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 				C7E5DF7222381698001290F7 /* Database */,
 				C7E5DF162237ED96001290F7 /* AppDelegate.swift */,
 				C7E5DF182237ED96001290F7 /* ViewController.swift */,
+				C7E5DF732238216A001290F7 /* CustomersTableViewController.swift */,
+				C7E5DF7522382993001290F7 /* CustomerViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -211,6 +217,8 @@
 				C7E5DF6822380B0E001290F7 /* Service+CoreDataProperties.swift in Sources */,
 				C7E5DF172237ED96001290F7 /* AppDelegate.swift in Sources */,
 				C7E5DF1F2237ED96001290F7 /* CoreDataExample.xcdatamodeld in Sources */,
+				C7E5DF7622382993001290F7 /* CustomerViewController.swift in Sources */,
+				C7E5DF742238216A001290F7 /* CustomersTableViewController.swift in Sources */,
 				C7E5DF7022380D67001290F7 /* CoreDataManager.swift in Sources */,
 				C7E5DF6B22380B0E001290F7 /* Customer+CoreDataClass.swift in Sources */,
 				C7E5DF6922380B0E001290F7 /* RowOfOrder+CoreDataClass.swift in Sources */,
