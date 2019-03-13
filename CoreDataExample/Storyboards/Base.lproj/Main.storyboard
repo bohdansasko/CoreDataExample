@@ -424,14 +424,22 @@
                                     </switch>
                                 </subviews>
                             </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VSv-2R-ZKt">
+                                <rect key="frame" x="0.0" y="328" width="375" height="339"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="VSv-2R-ZKt" firstAttribute="top" secondItem="q3z-H8-msb" secondAttribute="bottom" constant="8" id="6T8-pL-MZt"/>
                             <constraint firstItem="q3z-H8-msb" firstAttribute="top" secondItem="shM-gV-Yfe" secondAttribute="bottom" constant="8" id="8Dg-GE-sZm"/>
                             <constraint firstItem="shM-gV-Yfe" firstAttribute="leading" secondItem="hc0-v3-U6n" secondAttribute="leading" constant="8" id="8HP-rp-6rw"/>
+                            <constraint firstItem="VSv-2R-ZKt" firstAttribute="leading" secondItem="hc0-v3-U6n" secondAttribute="leading" id="DZ4-TF-sdE"/>
+                            <constraint firstItem="hc0-v3-U6n" firstAttribute="trailing" secondItem="VSv-2R-ZKt" secondAttribute="trailing" id="ESJ-Wc-Jdh"/>
                             <constraint firstItem="hc0-v3-U6n" firstAttribute="trailing" secondItem="shM-gV-Yfe" secondAttribute="trailing" constant="8" id="Iuy-6p-WLi"/>
                             <constraint firstItem="42p-o9-5E0" firstAttribute="top" secondItem="k1v-qk-qZF" secondAttribute="bottom" constant="8" id="JNx-5T-S0L"/>
                             <constraint firstItem="k1v-qk-qZF" firstAttribute="top" secondItem="hc0-v3-U6n" secondAttribute="top" id="LEf-rj-O74"/>
+                            <constraint firstItem="hc0-v3-U6n" firstAttribute="bottom" secondItem="VSv-2R-ZKt" secondAttribute="bottom" id="NnA-8R-Tsc"/>
                             <constraint firstItem="shM-gV-Yfe" firstAttribute="top" secondItem="42p-o9-5E0" secondAttribute="bottom" constant="8" id="Qag-ya-gUP"/>
                             <constraint firstItem="k1v-qk-qZF" firstAttribute="leading" secondItem="hc0-v3-U6n" secondAttribute="leading" id="Qee-2F-0xo"/>
                             <constraint firstItem="42p-o9-5E0" firstAttribute="leading" secondItem="hc0-v3-U6n" secondAttribute="leading" constant="8" id="aPb-O4-AIz"/>
@@ -459,6 +467,7 @@
                         <outlet property="datePicker" destination="k1v-qk-qZF" id="dLE-GF-hUg"/>
                         <outlet property="switchMade" destination="fQm-yH-94K" id="KjG-o3-fTx"/>
                         <outlet property="switchPaid" destination="LQR-cQ-mHX" id="upX-tj-DCJ"/>
+                        <outlet property="tableView" destination="VSv-2R-ZKt" id="pmo-wV-gTv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUh-l1-Qna" userLabel="First Responder" sceneMemberID="firstResponder"/>

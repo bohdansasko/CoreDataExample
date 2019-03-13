@@ -7,19 +7,23 @@
 //
 
 import UIKit
+import CoreData
 
 class OrderViewController: UIViewController {
     let kSegueOrderToCustomers = "orderToCustomers"
     
     var order: Order?
+    var dataSource: NSFetchedResultsController<RowOfOrder>?
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var customerTextField: UITextField!
     @IBOutlet weak var switchMade: UISwitch!
     @IBOutlet weak var switchPaid: UISwitch!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         if order == nil {
             order = Order()
@@ -31,6 +35,14 @@ class OrderViewController: UIViewController {
             switchMade.isOn = order.made
             switchPaid.isOn = order.paid
             customerTextField.text = order.customer?.name
+            
+            dataSource = order.getRowsOfOrder(order: order)
+            dataSource?.delegate = self
+            do {
+                try dataSource!.performFetch()
+            } catch (let err) {
+                print(err)
+            }
         }
     }
     
@@ -71,5 +83,42 @@ class OrderViewController: UIViewController {
         }
         
         return order != nil
+    }
+}
+
+extension OrderViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let idxPath = newIndexPath {
+                tableView.insertRows(at: [idxPath], with: .automatic)
+            }
+        case .update:
+            if let idxPath = indexPath {
+//                let customer = dataSource.object(at: idxPath)
+//                let cell = tableView.cellForRow(at: idxPath)
+//                cell?.textLabel?.text = customer.name
+            }
+        case .move:
+            if let idxPath = indexPath {
+                tableView.deleteRows(at: [idxPath], with: .automatic)
+            }
+            
+            if let idxPath = newIndexPath {
+                tableView.insertRows(at: [idxPath], with: .automatic)
+            }
+        case .delete:
+            if let idxPath = indexPath {
+                tableView.deleteRows(at: [idxPath], with: .automatic)
+            }
+        }
     }
 }
