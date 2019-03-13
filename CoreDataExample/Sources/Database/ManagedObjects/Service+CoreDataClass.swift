@@ -12,5 +12,7 @@ import CoreData
 
 @objc(Service)
 public class Service: NSManagedObject {
-
+    convenience init() {
+        self.init(context: CoreDataManager.shared.persistentContainer.viewContext)
+    }
 }
