@@ -10,13 +10,18 @@ import UIKit
 import CoreData
 
 class CustomersTableViewController: UITableViewController {
-
+    let kCustomerSegue = "customersToCustomer"
+    
     lazy var fetchedResultsController: NSFetchedResultsController<Customer> = CoreDataManager.shared.getFetchedResultsController(entityName: "Customer", sortKey: "name")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         fetchCustomersFromDB()
+    }
+    
+    @IBAction func handleActionAddCustomer(_ sender: Any) {
+        performSegue(withIdentifier: kCustomerSegue, sender: nil)
     }
     
     func fetchCustomersFromDB() {
@@ -84,14 +89,20 @@ class CustomersTableViewController: UITableViewController {
     }
     */
 
-    /*
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let customer = fetchedResultsController.object(at: indexPath)
+        performSegue(withIdentifier: kCustomerSegue, sender: customer)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == kCustomerSegue {
+            guard let navControl = segue.destination as? UINavigationController,
+                  let customerVC = navControl.topViewController as? CustomerViewController else { return }
+            customerVC.customer = sender as? Customer
+        }
     }
-    */
 
 }

@@ -146,7 +146,13 @@
                             <outlet property="delegate" destination="pio-9Q-OUE" id="Mpb-BC-22Z"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="ugx-P1-F1F"/>
+                    <navigationItem key="navigationItem" title="Customers" id="ugx-P1-F1F">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="IHO-0y-MAC">
+                            <connections>
+                                <action selector="handleActionAddCustomer:" destination="pio-9Q-OUE" id="W6H-me-4Se"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="Ugp-nf-Uus" kind="presentation" identifier="customersToCustomer" id="wjF-YX-ZwW"/>
                     </connections>
