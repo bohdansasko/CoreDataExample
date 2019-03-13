@@ -116,7 +116,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="glI-nY-4l0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1366" y="1243"/>
+            <point key="canvasLocation" x="1305" y="1284"/>
         </scene>
         <!--Service-->
         <scene sceneID="5QT-7t-7Bi">
@@ -380,7 +380,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GkP-QL-sbh">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GkP-QL-sbh">
                                         <rect key="frame" x="88" y="0.0" width="241" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -389,6 +389,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1R7-kg-Np1">
                                         <rect key="frame" x="337" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="&gt;"/>
+                                        <connections>
+                                            <action selector="choiceCustomerWithSender:" destination="mXZ-Ab-UfT" eventType="touchUpInside" id="JgY-oW-51W"/>
+                                            <segue destination="pio-9Q-OUE" kind="show" identifier="orderToCustomers" id="dSf-Yc-KVe"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -459,7 +463,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUh-l1-Qna" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3164" y="1242.7286356821589"/>
+            <point key="canvasLocation" x="3255" y="1283"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BpW-SD-bqf">
@@ -477,7 +481,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0cc-0m-Mdp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2225" y="1243"/>
+            <point key="canvasLocation" x="2225" y="1283"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dSf-Yc-KVe"/>
+    </inferredMetricsTieBreakers>
 </document>

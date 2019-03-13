@@ -14,6 +14,9 @@ class CustomersTableViewController: UITableViewController {
     
     lazy var fetchedResultsController: NSFetchedResultsController<Customer> = CoreDataManager.shared.getFetchedResultsController(entityName: "Customer", sortKey: "name")
     
+    typealias Select = (Customer?) -> ()
+    var didSelect: Select?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,8 +59,14 @@ class CustomersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let customer = fetchedResultsController.object(at: indexPath)
-        performSegue(withIdentifier: kCustomerSegue, sender: customer)
+        if let didSelect = self.didSelect {
+            didSelect(customer)
+            navigationController?.popViewController(animated: true)
+        } else {
+            performSegue(withIdentifier: kCustomerSegue, sender: customer)
+        }
     }
     
     // MARK: - Navigation

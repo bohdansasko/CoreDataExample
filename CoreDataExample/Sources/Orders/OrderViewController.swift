@@ -9,6 +9,7 @@
 import UIKit
 
 class OrderViewController: UIViewController {
+    let kSegueOrderToCustomers = "orderToCustomers"
     
     var order: Order?
     
@@ -19,6 +20,18 @@ class OrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if order == nil {
+            order = Order()
+            order?.date = NSDate()
+        }
+        
+        if let order = order {
+            datePicker.date = order.date! as Date
+            switchMade.isOn = order.made
+            switchPaid.isOn = order.paid
+            customerTextField.text = order.customer?.name
+        }
     }
     
     @IBAction func save(sender: AnyObject) {
@@ -31,7 +44,32 @@ class OrderViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func choiceCustomer(sender: AnyObject) {
+        // performSegue(withIdentifier: kSegueOrderToCustomers, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == kSegueOrderToCustomers {
+            guard let destVC = segue.destination as? CustomersTableViewController else {
+                return
+            }
+            destVC.didSelect = { [unowned self] (customer) in
+                if let customer = customer {
+                    self.order?.customer = customer
+                    self.customerTextField.text = customer.name
+                }
+            }
+        }
+    }
+    
     func saveOrder() -> Bool {
-        return true
+        if let order = order {
+            order.date = datePicker.date as NSDate
+            order.made = switchMade.isOn
+            order.paid = switchPaid.isOn
+            CoreDataManager.shared.saveContext()
+        }
+        
+        return order != nil
     }
 }

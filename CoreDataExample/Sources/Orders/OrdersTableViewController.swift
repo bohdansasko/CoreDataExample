@@ -95,8 +95,10 @@ extension OrdersTableViewController: NSFetchedResultsControllerDelegate {
         case .update:
             if let idxPath = indexPath {
                 let order = fetchedResultsController.object(at: idxPath)
-                let cell = tableView.cellForRow(at: idxPath)
-                cell?.textLabel?.text = order.customer?.name
+                guard let cell = tableView.cellForRow(at: idxPath) else {
+                    return
+                }
+                configCell(cell: cell, order: order)
             }
         case .move:
             if let idxPath = indexPath {
