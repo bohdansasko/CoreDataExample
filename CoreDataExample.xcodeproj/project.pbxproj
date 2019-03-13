@@ -45,7 +45,7 @@
 		C7E5DF6622380B0E001290F7 /* Order+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C7E5DF6F22380D67001290F7 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C7E5DF732238216A001290F7 /* CustomersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersTableViewController.swift; sourceTree = "<group>"; };
-		C7E5DF7522382993001290F7 /* CustomerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomerViewController.swift; path = CoreDataExample/Sources/CustomerViewController.swift; sourceTree = SOURCE_ROOT; };
+		C7E5DF7522382993001290F7 /* CustomerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomerViewController.swift; path = "CoreDataExample/Sources/New Group/CustomerViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		207227272238B66700176D42 /* Customers */ = {
+			isa = PBXGroup;
+			children = (
+				C7E5DF732238216A001290F7 /* CustomersTableViewController.swift */,
+				C7E5DF7522382993001290F7 /* CustomerViewController.swift */,
+			);
+			path = Customers;
+			sourceTree = "<group>";
+		};
 		C7E5DF0A2237ED96001290F7 = {
 			isa = PBXGroup;
 			children = (
@@ -91,8 +100,7 @@
 				C7E5DF7222381698001290F7 /* Database */,
 				C7E5DF162237ED96001290F7 /* AppDelegate.swift */,
 				C7E5DF182237ED96001290F7 /* ViewController.swift */,
-				C7E5DF732238216A001290F7 /* CustomersTableViewController.swift */,
-				C7E5DF7522382993001290F7 /* CustomerViewController.swift */,
+				207227272238B66700176D42 /* Customers */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
