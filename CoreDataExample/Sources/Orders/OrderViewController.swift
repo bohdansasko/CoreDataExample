@@ -23,26 +23,35 @@ class OrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        createOrderMock()
+        updateUI()
+        fetchOrderRowsFromDB()
+    }
+    
+    func createOrderMock() {
         if order == nil {
             order = Order()
             order?.date = NSDate()
         }
-        
+    }
+    
+    func updateUI() {
         if let order = order {
             datePicker.date = order.date! as Date
             switchMade.isOn = order.made
             switchPaid.isOn = order.paid
             customerTextField.text = order.customer?.name
-            
-            dataSource = order.getRowsOfOrder(order: order)
-            dataSource?.delegate = self
-            do {
-                try dataSource!.performFetch()
-            } catch (let err) {
-                print(err)
-            }
+        }
+    }
+    
+    func fetchOrderRowsFromDB() {
+        dataSource = order!.getRowsOfOrder(order: order!)
+        dataSource?.delegate = self
+        do {
+            try dataSource!.performFetch()
+        } catch (let err) {
+            print(err)
         }
     }
     
