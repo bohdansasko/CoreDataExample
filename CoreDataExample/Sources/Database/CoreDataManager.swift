@@ -60,6 +60,10 @@ class CoreDataManager: IDatabaseManager {
         }
     }
     
+    func deleteCustomer(customer: Customer) {
+        persistentContainer.viewContext.delete(customer)
+    }
+    
     func showCustomerFromDB() {
         let request = NSFetchRequest<Customer>(entityName: Customer.entity().name!)
         do {

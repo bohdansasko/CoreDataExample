@@ -25,6 +25,7 @@ class CustomersTableViewController: UITableViewController {
     }
     
     func fetchCustomersFromDB() {
+        fetchedResultsController.delegate = self
         do {
             try fetchedResultsController.performFetch()
         } catch (let err) {
@@ -105,4 +106,49 @@ class CustomersTableViewController: UITableViewController {
         }
     }
 
+}
+
+extension CustomersTableViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let idxPath = newIndexPath {
+                tableView.insertRows(at: [idxPath], with: .automatic)
+            }
+        case .update:
+            if let idxPath = indexPath {
+                let customer = fetchedResultsController.object(at: idxPath)
+                let cell = tableView.cellForRow(at: idxPath)
+                cell?.textLabel?.text = customer.name
+            }
+        case .move:
+            if let idxPath = indexPath {
+                tableView.deleteRows(at: [idxPath], with: .automatic)
+            }
+            
+            if let idxPath = newIndexPath {
+                tableView.insertRows(at: [idxPath], with: .automatic)
+            }
+        case .delete:
+            if let idxPath = indexPath {
+                tableView.deleteRows(at: [idxPath], with: .automatic)
+            }
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let customer = fetchedResultsController.object(at: indexPath)
+            CoreDataManager.shared.deleteCustomer(customer: customer)
+            CoreDataManager.shared.saveContext()
+        }
+    }
 }

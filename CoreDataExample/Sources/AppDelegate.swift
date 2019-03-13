@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        runCoreDataExample()
         return true
     }
 
@@ -41,18 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         CoreDataManager.shared.saveContext()
-    }
-
-    func runCoreDataExample() {
-        CoreDataManager.shared.addCustomer(name: "000 \"Romashka\"", info: nil)
-        CoreDataManager.shared.saveContext()
-        
-        CoreDataManager.shared.showCustomerFromDB()
-        
-//        CoreDataManager.shared.deleteCustomers()
-//        CoreDataManager.shared.saveContext()
-//        
-//        CoreDataManager.shared.showCustomerFromDB()
     }
 }
 
