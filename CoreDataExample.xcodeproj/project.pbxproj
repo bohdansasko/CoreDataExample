@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		207227292238B72300176D42 /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207227282238B72300176D42 /* ServiceViewController.swift */; };
 		2072272B2238B73A00176D42 /* ServicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072272A2238B73A00176D42 /* ServicesTableViewController.swift */; };
+		C72F57CD22391FF40029536C /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72F57CC22391FF40029536C /* OrderViewController.swift */; };
+		C72F57CF223920070029536C /* OrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72F57CE223920070029536C /* OrdersTableViewController.swift */; };
 		C7E5DF172237ED96001290F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E5DF162237ED96001290F7 /* AppDelegate.swift */; };
 		C7E5DF192237ED96001290F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E5DF182237ED96001290F7 /* ViewController.swift */; };
 		C7E5DF1C2237ED96001290F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7E5DF1A2237ED96001290F7 /* Main.storyboard */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		207227282238B72300176D42 /* ServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
 		2072272A2238B73A00176D42 /* ServicesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTableViewController.swift; sourceTree = "<group>"; };
+		C72F57CC22391FF40029536C /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		C72F57CE223920070029536C /* OrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewController.swift; sourceTree = "<group>"; };
 		C7E5DF132237ED96001290F7 /* CoreDataExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7E5DF162237ED96001290F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7E5DF182237ED96001290F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +85,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		C72F57D0223920310029536C /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				C72F57CE223920070029536C /* OrdersTableViewController.swift */,
+				C72F57CC22391FF40029536C /* OrderViewController.swift */,
+			);
+			path = Orders;
+			sourceTree = "<group>";
+		};
 		C7E5DF0A2237ED96001290F7 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +128,7 @@
 				C7E5DF7222381698001290F7 /* Database */,
 				207227272238B66700176D42 /* Customers */,
 				2072272C2238B73F00176D42 /* Services */,
+				C72F57D0223920310029536C /* Orders */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -241,6 +255,8 @@
 				2072272B2238B73A00176D42 /* ServicesTableViewController.swift in Sources */,
 				C7E5DF1F2237ED96001290F7 /* CoreDataExample.xcdatamodeld in Sources */,
 				C7E5DF7622382993001290F7 /* CustomerViewController.swift in Sources */,
+				C72F57CF223920070029536C /* OrdersTableViewController.swift in Sources */,
+				C72F57CD22391FF40029536C /* OrderViewController.swift in Sources */,
 				C7E5DF742238216A001290F7 /* CustomersTableViewController.swift in Sources */,
 				207227292238B72300176D42 /* ServiceViewController.swift in Sources */,
 				C7E5DF7022380D67001290F7 /* CoreDataManager.swift in Sources */,
