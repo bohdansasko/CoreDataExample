@@ -14,6 +14,9 @@ class ServicesTableViewController: UITableViewController {
     
     lazy var fetchedResultsController: NSFetchedResultsController<Service> = CoreDataManager.shared.getFetchedResultsController(entityName: "Service", sortKey: "name")
     
+    typealias Select = (Service?) -> ()
+    var onDidSelect: Select?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,7 +60,13 @@ class ServicesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let service = fetchedResultsController.object(at: indexPath)
-        performSegue(withIdentifier: kServiceSegue, sender: service)
+        
+        if let callback = onDidSelect {
+            callback(service)
+            navigationController?.popViewController(animated: true)
+        } else {
+            performSegue(withIdentifier: kServiceSegue, sender: service)
+        }
     }
     
     // MARK: - Navigation

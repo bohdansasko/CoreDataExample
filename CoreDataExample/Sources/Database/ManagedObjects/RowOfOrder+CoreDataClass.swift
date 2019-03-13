@@ -12,5 +12,7 @@ import CoreData
 
 @objc(RowOfOrder)
 public class RowOfOrder: NSManagedObject {
-
+    convenience init() {
+        self.init(context: CoreDataManager.shared.persistentContainer.viewContext)
+    }
 }

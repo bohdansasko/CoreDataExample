@@ -10,7 +10,10 @@ import UIKit
 import CoreData
 
 class OrderViewController: UIViewController {
-    let kSegueOrderToCustomers = "orderToCustomers"
+    enum SeguesId: String {
+        case orderToCustomers
+        case orderToRowOfOrder
+    }
     
     var order: Order?
     var dataSource: NSFetchedResultsController<RowOfOrder>?
@@ -24,19 +27,21 @@ class OrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createOrderMock()
-        updateUI()
+        setupOrderModel()
+        setupViews()
         fetchOrderRowsFromDB()
     }
     
-    func createOrderMock() {
+    func setupOrderModel() {
         if order == nil {
             order = Order()
             order?.date = NSDate()
         }
     }
     
-    func updateUI() {
+    func setupViews() {
+        tableView.dataSource = self
+        
         if let order = order {
             datePicker.date = order.date! as Date
             switchMade.isOn = order.made
@@ -55,13 +60,13 @@ class OrderViewController: UIViewController {
         }
     }
     
-    @IBAction func save(sender: AnyObject) {
+    @IBAction func save(sender: Any) {
         if saveOrder() {
             dismiss(animated: true, completion: nil)
         }
     }
     
-    @IBAction func cancel(sender: AnyObject) {
+    @IBAction func cancel(sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -69,8 +74,16 @@ class OrderViewController: UIViewController {
         // performSegue(withIdentifier: kSegueOrderToCustomers, sender: nil)
     }
     
+    @IBAction func addRowOfOrder(_ sender: Any) {
+        if let order = order {
+            let newRow = RowOfOrder()
+            newRow.order = order
+            performSegue(withIdentifier: SeguesId.orderToRowOfOrder.rawValue, sender: newRow)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == kSegueOrderToCustomers {
+        if segue.identifier == SeguesId.orderToCustomers.rawValue {
             guard let destVC = segue.destination as? CustomersTableViewController else {
                 return
             }
@@ -80,6 +93,12 @@ class OrderViewController: UIViewController {
                     self.customerTextField.text = customer.name
                 }
             }
+        } else if segue.identifier == SeguesId.orderToRowOfOrder.rawValue {
+            guard let navigController = segue.destination as? UINavigationController,
+                  let destVC = navigController.topViewController as? RowOfOrderViewController  else {
+                return
+            }
+            destVC.rowOfOrder = sender as? RowOfOrder
         }
     }
     
@@ -92,6 +111,32 @@ class OrderViewController: UIViewController {
         }
         
         return order != nil
+    }
+    
+    
+    
+}
+
+extension OrderViewController: UITableViewDataSource {
+    // MARK - Table View
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let sec = dataSource?.sections {
+            return sec[section].numberOfObjects
+        }
+        
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let rowOfOrder = dataSource?.object(at: indexPath) else { return UITableViewCell() }
+        
+        let cell = UITableViewCell()
+        cell.textLabel?.text = (rowOfOrder.service?.name ?? "- ") + " - " + String(rowOfOrder.sum)
+        return cell
     }
 }
 
@@ -112,9 +157,9 @@ extension OrderViewController: NSFetchedResultsControllerDelegate {
             }
         case .update:
             if let idxPath = indexPath {
-//                let customer = dataSource.object(at: idxPath)
-//                let cell = tableView.cellForRow(at: idxPath)
-//                cell?.textLabel?.text = customer.name
+                guard let rowOfOrder = dataSource?.object(at: idxPath),
+                      let cell = tableView.cellForRow(at: idxPath) else { return }
+                cell.textLabel?.text = (rowOfOrder.service?.name ?? "- ") + " - " + String(rowOfOrder.sum)
             }
         case .move:
             if let idxPath = indexPath {
