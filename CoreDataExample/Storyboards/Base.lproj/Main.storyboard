@@ -45,6 +45,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ee-bm-LOl">
                                         <rect key="frame" x="0.0" y="114" width="94" height="30"/>
                                         <state key="normal" title="Orders report"/>
+                                        <connections>
+                                            <segue destination="JtB-EY-17V" kind="show" id="iBS-4m-CMb"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -117,6 +120,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="glI-nY-4l0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1305" y="1284"/>
+        </scene>
+        <!--Reports-->
+        <scene sceneID="3wM-4D-88R">
+            <objects>
+                <tableViewController title="Reports" id="JtB-EY-17V" customClass="ReportTableViewController" customModule="CoreDataExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gJg-z0-pys">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="JtB-EY-17V" id="L3S-oA-s6B"/>
+                            <outlet property="delegate" destination="JtB-EY-17V" id="cim-ax-QEy"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WMa-9f-KzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1305" y="2033"/>
         </scene>
         <!--Service-->
         <scene sceneID="5QT-7t-7Bi">
@@ -619,7 +640,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dSf-Yc-KVe"/>
-        <segue reference="Qlv-6B-gvL"/>
+        <segue reference="RLg-jy-Y14"/>
+        <segue reference="gZ3-8L-0pz"/>
     </inferredMetricsTieBreakers>
 </document>
